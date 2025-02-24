@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Beam Department Grid (2x3)</title>
+  <style>
+    /* 
+      1) Embed your Suisse Int’l font if you have a direct URL or local file.
+         This is just an example. Adjust the URL or remove if you’ll load 
+         the font differently (e.g., a custom type kit).
+    */
+    @font-face {
+      font-family: "Suisse Intl";
+      src: url("https://example.com/fonts/SuisseIntl-Regular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    :root {
+      /* Brand colors */
+      --beam-bg: #f5f7fa;
+      --beam-card-bg: #ffffff;
+      --beam-card-border: #c076e2; /* accent border color */
+      --beam-accent: #c076e2;      /* accent button color */
+
+      /* Use Suisse Intl, fallback to sans-serif if not loaded */
+      --beam-font: "Suisse Intl", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 30px;
+      background: var(--beam-bg);
+      font-family: var(--beam-font);
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    /* A fixed grid: 2 rows x 3 columns for exactly 6 cards */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* The card style */
+    .dept-card {
+      background: var(--beam-card-bg);
+      border: 2px solid transparent;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      cursor: pointer;
+    }
+    .dept-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--beam-card-border);
+    }
+
+    .dept-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .dept-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 0.5rem 0;
+    }
+    .dept-subtitle {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1rem;
+      min-height: 40px; /* keep consistent height if subtitles vary */
+    }
+
+    /* The “View Department Page” link/button */
+    .dept-link {
+      display: inline-block;
+      padding: 8px 12px;
+      background: var(--beam-accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .dept-link:hover {
+      background: #a962c4; /* slightly darker purple on hover */
+    }
+
+    /* Basic responsiveness for smaller screens */
+    @media (max-width: 768px) {
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 480px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+      .dept-title {
+        font-size: 1rem;
+      }
+      .dept-subtitle {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Department Workspaces</h1>
+
+  <div class="grid-container">
+    <!-- Department 1 -->
+    <div class="dept-card">
+      <div class="dept-icon">⚙️</div>
+      <div class="dept-title">Engineering Department</div>
+      <div class="dept-subtitle">Building & maintaining our tech infrastructure</div>
+      <a class="dept-link" href="https://notion.so/engineering" target="_blank">
+        View Department Page
+      </a>
+    </div>
+
+    <!-- Department 2 -->
+    <div class="dept-card">
+      <div class="dept-icon">🤝</div>
+      <div class="dept-title">Investments & Partnerships</div>
+      <div class="dept-subtitle">Securing strategic alliances & capital growth</div>
+      <a class="dept-link" href="https://notion.so/investments" target="_blank">
+        View Department Page
+      </a>
+    </div>
+
+    <!-- Department 3 -->
+    <div class="dept-card">
+      <div class="dept-icon">🔨</div>
+      <div class="dept-title">Operations & HR Department</div>
+      <div class="dept-subtitle">Empowering people & streamlining workflows</div>
+      <a class="dept-link" href="https://notion.so/ops-hr" target="_blank">
+        View Department Page
+      </a>
+    </div>
+
+    <!-- Department 4 -->
+    <div class="dept-card">
+      <div class="dept-icon">🎨</div>
+      <div class="dept-title">Design Department</div>
+      <div class="dept-subtitle">Crafting engaging visuals & UX experiences</div>
+      <a class="dept-link" href="https://notion.so/design" target="_blank">
+        View Department Page
+      </a>
+    </div>
+
+    <!-- Department 5 -->
+    <div class="dept-card">
+      <div class="dept-icon">🌐</div>
+      <div class="dept-title">Support Department</div>
+      <div class="dept-subtitle">Ensuring excellent client & user assistance</div>
+      <a class="dept-link" href="https://notion.so/support" target="_blank">
+        View Department Page
+      </a>
+    </div>
+
+    <!-- Department 6 -->
+    <div class="dept-card">
+      <div class="dept-icon">🎮</div>
+      <div class="dept-title">Game Operations Department</div>
+      <div class="dept-subtitle">Managing live ops & player engagement</div>
+      <a class="dept-link" href="https://notion.so/game-ops" target="_blank">
+        View Department Page
+      </a>
+    </div>
+  </div>
+</body>
+</html>
