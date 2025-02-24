@@ -2,208 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Beam Department Grid</title>
+  <title>Notion Link with App Fallback</title>
   <style>
-    /* 1) Import Inter, Notion's typical default font */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-
-    /* Notion-like heading & paragraph sizes */
-    h1, .notion-h1 {
-      font-size: 1.875rem; /* ~30px */
-      margin-bottom: 0.5em;
-      font-weight: 700;
-    }
-    h2, .notion-h2 {
-      font-size: 1.5rem; /* ~24px */
-      margin-bottom: 0.5em;
-      font-weight: 700;
-    }
-    h3, .notion-h3 {
-      font-size: 1.25rem; /* ~20px */
-      margin-bottom: 0.5em;
-      font-weight: 700;
-    }
-    p, .notion-p {
-      font-size: 1rem; /* ~16px */
-      margin-bottom: 0.75em;
-      line-height: 1.6;
-    }
-
-    :root {
-      --beam-bg: #ffffff;          /* white page background */
-      --beam-card-bg: #ffffff;     /* white card background */
-      --beam-card-border: #c076e2; /* accent border color */
-      --beam-accent: #c076e2;      /* accent button color */
-      --beam-font: 'Inter', sans-serif;
-    }
-
+    /* Minimal styling, same as before but simplified */
     body {
-      margin: 0;
-      padding: 30px;
-      background: var(--beam-bg);
-      font-family: var(--beam-font);
-      color: #333;
+      font-family: 'Inter', sans-serif;
+      margin: 20px;
     }
-
-    /* Left-align the main title (Heading 1 style) */
-    h1 {
-      text-align: left;
-    }
-
-    /* Grid with 3 columns on large screens */
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    /* The card style */
-    .dept-card {
-      background: var(--beam-card-bg);
-      border: 2px solid transparent;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      text-align: center;
-      padding: 20px;
-      transition: transform 0.2s ease, border-color 0.2s ease;
-      cursor: pointer;
-    }
-    .dept-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--beam-card-border);
-    }
-
-    .dept-icon {
-      font-size: 2rem; /* a bit larger than normal text for emphasis */
-      margin-bottom: 0.5rem;
-    }
-    /* Use Heading 3 size for dept titles */
-    .dept-title {
-      font-size: 1.25rem; /* ~20px, same as Notion's H3 */
-      font-weight: 700;
-      margin: 0.5rem 0;
-    }
-    /* Use paragraph size for dept subtitle */
-    .dept-subtitle {
-      font-size: 1rem;    /* ~16px, Notion's normal text */
-      color: #666;
-      margin-bottom: 1rem;
-      line-height: 1.5;
-      min-height: 40px; /* helps keep uniform card height */
-    }
-
-    /* The “View Department Page” button */
-    .dept-link {
+    .department-link {
       display: inline-block;
-      padding: 8px 12px;
-      background: var(--beam-accent);
+      padding: 10px 15px;
+      background: #c076e2;
       color: #fff;
       text-decoration: none;
-      border-radius: 5px;
-      font-size: 1rem;
-      transition: background 0.2s;
+      border-radius: 4px;
+      margin: 8px 0;
     }
-    .dept-link:hover {
-      background: #a962c4; /* slightly darker purple on hover */
-    }
-
-    /* Responsive for smaller screens */
-    @media (max-width: 768px) {
-      .grid-container {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (max-width: 480px) {
-      .grid-container {
-        grid-template-columns: 1fr;
-      }
+    .department-link:hover {
+      background: #a962c4;
     }
   </style>
 </head>
 <body>
-  <h1>Department Workspaces</h1>
+  <h1>Test Department Link</h1>
+  
+  <p>
+    Click below to open the “Engineering Department” in the Notion desktop app if possible.  
+    Otherwise, it will open in your browser after ~1 second.
+  </p>
 
-  <div class="grid-container">
+  <a href="#"
+     class="department-link"
+     onclick="openNotionOrFallback(event)">
+    Open Engineering Department
+  </a>
 
-    <!-- Department 1 -->
-    <div class="dept-card">
-      <div class="dept-icon">⚙️</div>
-      <div class="dept-title">Engineering Department</div>
-      <div class="dept-subtitle">Building & maintaining our tech infrastructure</div>
-      <a class="dept-link" 
-         href="https://www.notion.so/meritcircle/Engineering-department-171095a737de810385b5dc53a9e54050?pvs=4">
-        View Department Page
-      </a>
-    </div>
+  <script>
+    // The Notion app link (deep link)
+    const notionAppLink = "notion://www.notion.so/meritcircle/Engineering-department-171095a737de810385b5dc53a9e54050?pvs=4";
+    
+    // The fallback web link
+    const notionWebLink = "https://www.notion.so/meritcircle/Engineering-department-171095a737de810385b5dc53a9e54050?pvs=4";
 
-    <!-- Department 2 -->
-    <div class="dept-card">
-      <div class="dept-icon">🤝</div>
-      <div class="dept-title">Investments & Partnerships</div>
-      <div class="dept-subtitle">Securing strategic alliances & capital growth</div>
-      <a class="dept-link"
-         href="https://www.notion.so/meritcircle/Investments-Partnerships-Department-171095a737de81129badca4d8f73a195?pvs=4">
-        View Department Page
-      </a>
-    </div>
+    function openNotionOrFallback(e) {
+      e.preventDefault(); // prevent normal link navigation
 
-    <!-- Department 3 -->
-    <div class="dept-card">
-      <div class="dept-icon">🔨</div>
-      <div class="dept-title">Operations & HR Department</div>
-      <div class="dept-subtitle">Empowering people & streamlining workflows</div>
-      <a class="dept-link"
-         href="https://www.notion.so/meritcircle/Operations-HR-department-171095a737de81e2a5aad8689c1fb19f?pvs=4">
-        View Department Page
-      </a>
-    </div>
+      // 1) Try opening notion:// link
+      window.location = notionAppLink;
 
-    <!-- Department 4 -->
-    <div class="dept-card">
-      <div class="dept-icon">🎨</div>
-      <div class="dept-title">Design Department</div>
-      <div class="dept-subtitle">Crafting engaging visuals & UX experiences</div>
-      <a class="dept-link"
-         href="https://www.notion.so/meritcircle/Design-Department-171095a737de819aa87dd612f938cbe1?pvs=4">
-        View Department Page
-      </a>
-    </div>
-
-    <!-- Department 5 -->
-    <div class="dept-card">
-      <div class="dept-icon">🌐</div>
-      <div class="dept-title">Support Department</div>
-      <div class="dept-subtitle">Ensuring excellent client & user assistance</div>
-      <a class="dept-link"
-         href="https://www.notion.so/meritcircle/Support-Department-171095a737de81308072dbed40be44be?pvs=4">
-        View Department Page
-      </a>
-    </div>
-
-    <!-- Department 6 -->
-    <div class="dept-card">
-      <div class="dept-icon">📣</div>
-      <div class="dept-title">Content & Marketing</div>
-      <div class="dept-subtitle">Telling our story & driving brand engagement</div>
-      <a class="dept-link"
-         href="https://www.notion.so/meritcircle/Content-Marketing-Department-171095a737de81d7ac26e7af3b305631?pvs=4">
-        View Department Page
-      </a>
-    </div>
-
-    <!-- Department 7 -->
-    <div class="dept-card">
-      <div class="dept-icon">🎮</div>
-      <div class="dept-title">Game Operations Department</div>
-      <div class="dept-subtitle">Managing live ops & player engagement</div>
-      <a class="dept-link"
-         href="https://www.notion.so/meritcircle/Game-Operations-Department-171095a737de810081ebcfca522b3564?pvs=4">
-        View Department Page
-      </a>
-    </div>
-
-  </div>
+      // 2) After ~1 second, open the fallback web link
+      //    If the app opened successfully, most browsers won't get here.
+      //    If the app isn't installed, user might see a "this link isn't recognized" warning,
+      //    and after 1 second, we open the fallback in the same tab.
+      setTimeout(function() {
+        window.location = notionWebLink;
+      }, 1000);
+    }
+  </script>
 </body>
 </html>
