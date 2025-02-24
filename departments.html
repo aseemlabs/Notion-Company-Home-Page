@@ -7,14 +7,33 @@
     /* 1) Import Inter, Notion's typical default font */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
+    /* Notion-like heading & paragraph sizes */
+    h1, .notion-h1 {
+      font-size: 1.875rem; /* ~30px */
+      margin-bottom: 0.5em;
+      font-weight: 700;
+    }
+    h2, .notion-h2 {
+      font-size: 1.5rem; /* ~24px */
+      margin-bottom: 0.5em;
+      font-weight: 700;
+    }
+    h3, .notion-h3 {
+      font-size: 1.25rem; /* ~20px */
+      margin-bottom: 0.5em;
+      font-weight: 700;
+    }
+    p, .notion-p {
+      font-size: 1rem; /* ~16px */
+      margin-bottom: 0.75em;
+      line-height: 1.6;
+    }
+
     :root {
-      /* Brand colors */
-      --beam-bg: #ffffff;          /* now white */
-      --beam-card-bg: #ffffff;     /* white cards */
+      --beam-bg: #ffffff;          /* white page background */
+      --beam-card-bg: #ffffff;     /* white card background */
       --beam-card-border: #c076e2; /* accent border color */
       --beam-accent: #c076e2;      /* accent button color */
-
-      /* Use Inter (the default Notion font), fallback to sans-serif */
       --beam-font: 'Inter', sans-serif;
     }
 
@@ -26,13 +45,12 @@
       color: #333;
     }
 
-    /* Align the main title to the left */
+    /* Left-align the main title (Heading 1 style) */
     h1 {
-      margin-bottom: 1.5rem;
       text-align: left;
     }
 
-    /* A grid with 3 columns on larger screens */
+    /* Grid with 3 columns on large screens */
     .grid-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -58,22 +76,25 @@
     }
 
     .dept-icon {
-      font-size: 2rem;
+      font-size: 2rem; /* a bit larger than normal text for emphasis */
       margin-bottom: 0.5rem;
     }
+    /* Use Heading 3 size for dept titles */
     .dept-title {
-      font-size: 1.2rem;
-      font-weight: bold;
+      font-size: 1.25rem; /* ~20px, same as Notion's H3 */
+      font-weight: 700;
       margin: 0.5rem 0;
     }
+    /* Use paragraph size for dept subtitle */
     .dept-subtitle {
-      font-size: 0.9rem;
+      font-size: 1rem;    /* ~16px, Notion's normal text */
       color: #666;
       margin-bottom: 1rem;
-      min-height: 40px; /* helps keep cards at uniform height */
+      line-height: 1.5;
+      min-height: 40px; /* helps keep uniform card height */
     }
 
-    /* The “View Department Page” link/button */
+    /* The “View Department Page” button */
     .dept-link {
       display: inline-block;
       padding: 8px 12px;
@@ -81,7 +102,7 @@
       color: #fff;
       text-decoration: none;
       border-radius: 5px;
-      font-size: 0.9rem;
+      font-size: 1rem;
       transition: background 0.2s;
     }
     .dept-link:hover {
@@ -98,12 +119,6 @@
       .grid-container {
         grid-template-columns: 1fr;
       }
-      .dept-title {
-        font-size: 1rem;
-      }
-      .dept-subtitle {
-        font-size: 0.85rem;
-      }
     }
   </style>
 </head>
@@ -111,14 +126,14 @@
   <h1>Department Workspaces</h1>
 
   <div class="grid-container">
+
     <!-- Department 1 -->
     <div class="dept-card">
       <div class="dept-icon">⚙️</div>
       <div class="dept-title">Engineering Department</div>
       <div class="dept-subtitle">Building & maintaining our tech infrastructure</div>
-      <a class="dept-link"
-         href="https://www.notion.so/meritcircle/Engineering-department-171095a737de810385b5dc53a9e54050?pvs=4"
-         target="_blank">
+      <a class="dept-link" 
+         href="https://www.notion.so/meritcircle/Engineering-department-171095a737de810385b5dc53a9e54050?pvs=4">
         View Department Page
       </a>
     </div>
@@ -129,8 +144,7 @@
       <div class="dept-title">Investments & Partnerships</div>
       <div class="dept-subtitle">Securing strategic alliances & capital growth</div>
       <a class="dept-link"
-         href="https://www.notion.so/meritcircle/Investments-Partnerships-Department-171095a737de81129badca4d8f73a195?pvs=4"
-         target="_blank">
+         href="https://www.notion.so/meritcircle/Investments-Partnerships-Department-171095a737de81129badca4d8f73a195?pvs=4">
         View Department Page
       </a>
     </div>
@@ -141,8 +155,7 @@
       <div class="dept-title">Operations & HR Department</div>
       <div class="dept-subtitle">Empowering people & streamlining workflows</div>
       <a class="dept-link"
-         href="https://www.notion.so/meritcircle/Operations-HR-department-171095a737de81e2a5aad8689c1fb19f?pvs=4"
-         target="_blank">
+         href="https://www.notion.so/meritcircle/Operations-HR-department-171095a737de81e2a5aad8689c1fb19f?pvs=4">
         View Department Page
       </a>
     </div>
@@ -153,8 +166,7 @@
       <div class="dept-title">Design Department</div>
       <div class="dept-subtitle">Crafting engaging visuals & UX experiences</div>
       <a class="dept-link"
-         href="https://www.notion.so/meritcircle/Design-Department-171095a737de819aa87dd612f938cbe1?pvs=4"
-         target="_blank">
+         href="https://www.notion.so/meritcircle/Design-Department-171095a737de819aa87dd612f938cbe1?pvs=4">
         View Department Page
       </a>
     </div>
@@ -165,8 +177,7 @@
       <div class="dept-title">Support Department</div>
       <div class="dept-subtitle">Ensuring excellent client & user assistance</div>
       <a class="dept-link"
-         href="https://www.notion.so/meritcircle/Support-Department-171095a737de81308072dbed40be44be?pvs=4"
-         target="_blank">
+         href="https://www.notion.so/meritcircle/Support-Department-171095a737de81308072dbed40be44be?pvs=4">
         View Department Page
       </a>
     </div>
@@ -177,8 +188,7 @@
       <div class="dept-title">Content & Marketing</div>
       <div class="dept-subtitle">Telling our story & driving brand engagement</div>
       <a class="dept-link"
-         href="https://www.notion.so/meritcircle/Content-Marketing-Department-171095a737de81d7ac26e7af3b305631?pvs=4"
-         target="_blank">
+         href="https://www.notion.so/meritcircle/Content-Marketing-Department-171095a737de81d7ac26e7af3b305631?pvs=4">
         View Department Page
       </a>
     </div>
@@ -189,12 +199,11 @@
       <div class="dept-title">Game Operations Department</div>
       <div class="dept-subtitle">Managing live ops & player engagement</div>
       <a class="dept-link"
-         href="https://www.notion.so/meritcircle/Game-Operations-Department-171095a737de810081ebcfca522b3564?pvs=4"
-         target="_blank">
+         href="https://www.notion.so/meritcircle/Game-Operations-Department-171095a737de810081ebcfca522b3564?pvs=4">
         View Department Page
       </a>
     </div>
-  </div>
 
+  </div>
 </body>
 </html>
