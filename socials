@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Socials Bar</title>
+
+  <!-- Use Font Awesome 6.4.2 (or higher) for the Substack icon -->
+  <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-o8Cn4IbcWY5fkq+2h1PUJblOW1ZBhXvMxewF2oDa7+9obqNPFI6Ch9aCPkrCg0lWF8jT5i1GnlkJ43T0QL6KBA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+/>
+
+  <style>
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #fff;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .wrapper {
+      display: flex;
+      gap: 24px; /* spacing between icons */
+      padding: 10px;
+    }
+
+    .social .icon {
+      font-size: 2em;  
+      color: #7a7a7a;  /* base color */
+      transition: color 0.3s ease;
+    }
+
+    /* Hover colors for each platform */
+    .website:hover    .icon { color: #c076e2; }
+    .twitter:hover    .icon { color: #1da1f2; }
+    .telegram:hover   .icon { color: #2aabee; }
+    .discord:hover    .icon { color: #5865f2; }
+    .medium:hover     .icon { color: #00ab6c; }
+    .substack:hover   .icon { color: #ff6719; }
+    .youtube:hover    .icon { color: #ff0000; }
+    .tiktok:hover     .icon { color: #ff0050; }
+
+    .social {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- Website -->
+    <div id="website" class="social website" onclick="navigate(this.id)">
+      <span class="icon"><i class="fa-solid fa-globe"></i></span>
+    </div>
+
+    <!-- Twitter -->
+    <div id="twitter" class="social twitter" onclick="navigate(this.id)">
+      <span class="icon"><i class="fab fa-twitter"></i></span>
+    </div>
+
+    <!-- Telegram -->
+    <div id="telegram" class="social telegram" onclick="navigate(this.id)">
+      <span class="icon"><i class="fab fa-telegram"></i></span>
+    </div>
+
+    <!-- Discord -->
+    <div id="discord" class="social discord" onclick="navigate(this.id)">
+      <span class="icon"><i class="fab fa-discord"></i></span>
+    </div>
+
+    <!-- Medium -->
+    <div id="medium" class="social medium" onclick="navigate(this.id)">
+      <span class="icon"><i class="fab fa-medium"></i></span>
+    </div>
+
+    <!-- Substack -->
+    <div id="substack" class="social substack" onclick="navigate(this.id)">
+      <span class="icon"><i class="fab fa-substack"></i></span>
+    </div>
+
+    <!-- YouTube -->
+    <div id="youtube" class="social youtube" onclick="navigate(this.id)">
+      <span class="icon"><i class="fab fa-youtube"></i></span>
+    </div>
+
+    <!-- TikTok -->
+    <div id="tiktok" class="social tiktok" onclick="navigate(this.id)">
+      <span class="icon"><i class="fab fa-tiktok"></i></span>
+    </div>
+  </div>
+
+  <script>
+    function navigate(id) {
+      switch (id) {
+        case "website":
+          window.open("https://onbeam.com", "_self");
+          break;
+        case "twitter":
+          window.open("https://x.com/BuildOnBeam", "_self");
+          break;
+        case "telegram":
+          window.open("https://t.me/buildonbeam_news", "_self");
+          break;
+        case "discord":
+          window.open("https://discord.com/invite/beamgamers", "_self");
+          break;
+        case "medium":
+          window.open("https://medium.com/@onbeam", "_self");
+          break;
+        case "substack":
+          window.open("https://onbeam.substack.com/", "_self");
+          break;
+        case "youtube":
+          window.open("https://www.youtube.com/@BeamGamers_", "_self");
+          break;
+        case "tiktok":
+          window.open("https://www.tiktok.com/@beamgamers", "_self");
+          break;
+      }
+    }
+  </script>
+</body>
+</html>
