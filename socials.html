@@ -1,3 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Socials Bar</title>
+
+  <!-- Load Font Awesome 6.2+ for these brand icons -->
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #fff; /* or any other background color you prefer */
+      font-family: "Poppins", sans-serif;
+    }
+
+    .wrapper {
+      display: flex;
+      gap: 24px; /* controls spacing between icons */
+      padding: 10px;
+    }
+
+    .social .icon {
+      font-size: 2em;  /* adjust icon size as needed */
+      color: #7a7a7a;  /* base color */
+      transition: color 0.3s ease;
+    }
+
+    /* Each platform gets a dedicated hover color */
+    .website:hover    .icon { color: #333; }      /* or brand color if you have one */
+    .twitter:hover    .icon { color: #1da1f2; }
+    .telegram:hover   .icon { color: #2aabee; }
+    .discord:hover    .icon { color: #5865f2; }
+    .medium:hover     .icon { color: #00ab6c; }
+    .youtube:hover    .icon { color: #ff0000; }
+    .tiktok:hover     .icon { color: #ff0050; }
+
+    .social {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
 <body>
   <div class="wrapper">
     <!-- Website -->
@@ -25,11 +78,6 @@
       <span class="icon"><i class="fab fa-medium"></i></span>
     </div>
 
-    <!-- Substack -->
-    <div id="substack" class="social substack" onclick="navigate(this.id)">
-      <span class="icon"><i class="fab fa-substack"></i></span>
-    </div>
-
     <!-- YouTube -->
     <div id="youtube" class="social youtube" onclick="navigate(this.id)">
       <span class="icon"><i class="fab fa-youtube"></i></span>
@@ -43,32 +91,31 @@
 
   <script>
     function navigate(id) {
+      // If you prefer new tabs, replace '_self' with '_blank'
       switch (id) {
         case "website":
-          window.open("https://onbeam.com", "_self");
+          window.open("https://onbeam.com/", "_blank");
           break;
         case "twitter":
-          window.open("https://x.com/BuildOnBeam", "_self");
+          window.open("https://x.com/BuildOnBeam", "_blank");
           break;
         case "telegram":
-          window.open("https://t.me/buildonbeam_news", "_self");
+          window.open("https://t.me/buildonbeam_news", "_blank");
           break;
         case "discord":
-          window.open("https://discord.com/invite/beamgamers", "_self");
+          window.open("http://discord.gg/beamgamers", "_blank");
           break;
         case "medium":
-          window.open("https://medium.com/@onbeam", "_self");
-          break;
-        case "substack":
-          window.open("https://onbeam.substack.com/", "_self");
+          window.open("https://medium.com/@onbeam", "_blank");
           break;
         case "youtube":
-          window.open("https://www.youtube.com/@BeamGamers_", "_self");
+          window.open("https://www.youtube.com/@BeamGamers_", "_blank");
           break;
         case "tiktok":
-          window.open("https://www.tiktok.com/@beamgamers", "_self");
+          window.open("https://www.tiktok.com/@beamgamers", "_blank");
           break;
       }
     }
   </script>
 </body>
+</html>
