@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Social Icons + Labels (Pill + Purple Hover)</title>
+  <title>Social Icons + Labels (Light/Dark Adaptive)</title>
 
   <!-- Load Inter (Notion-like) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" />
@@ -12,7 +12,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
   <style>
-    /* Reset & basic setup */
+    /* Basic resets & typography */
     * {
       margin: 0;
       padding: 0;
@@ -23,12 +23,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #fff;
       padding: 16px;
+      /* Default Light Mode */
+      background-color: #ffffff; 
+      color: #333333;
     }
 
-    /* Container spans the full width for the Notion embed, 
-       distributing items evenly, wrapping if needed. */
     .wrapper {
       width: 100%;
       display: flex;
@@ -37,52 +37,85 @@
       gap: 12px; /* spacing between pills if they wrap */
     }
 
-    /* Each link is a “pill” with gray bg, slight round corners, etc. */
+    /* 
+      PILL STYLES 
+      Default: light mode (gray background).
+    */
     .social {
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 8px;             /* space between icon & label */
+      gap: 8px;
       background-color: #f7f7f7;
-      border-radius: 8px;   /* pill shape */
+      border-radius: 8px;
       padding: 8px 12px;
-      min-width: 100px;     /* ensures a decent clickable area */
+      min-width: 100px;
       transition: background-color 0.2s ease;
     }
 
-    /* On hover, pill goes purple (#c076e2) */
+    /* Hover: pill goes purple (#c076e2). */
     .social:hover {
       background-color: #c076e2;
     }
 
-    /* Icon: default gray, brand color on hover. */
+    /* Icon defaults: gray (#7a7a7a). */
     .icon {
-      font-size: 1.25rem; /* ~20px */
+      font-size: 1.25rem;
       color: #7a7a7a;
       transition: color 0.3s;
     }
 
-    /* Text label: default #333, turns white on hover for contrast. */
+    /* Label defaults: #333 text. On hover, it becomes white. */
     .label {
-      font-size: 1rem;    /* ~16px, Notion-like paragraph size */
+      font-size: 1rem;
       color: #333;
       font-weight: 500;
       letter-spacing: 0.01rem;
       transition: color 0.3s;
     }
     .social:hover .label {
-      color: #fff;
+      color: #ffffff;
     }
 
-    /* Brand color on icon hover */
-    .website:hover   .icon { color: #333; }
-    .twitter:hover   .icon { color: #1da1f2; }
-    .telegram:hover  .icon { color: #2aabee; }
-    .discord:hover   .icon { color: #5865f2; }
-    .medium:hover    .icon { color: #00ab6c; }
-    .substack:hover  .icon { color: #ff6719; }
-    .youtube:hover   .icon { color: #ff0000; }
-    .tiktok:hover    .icon { color: #ff0050; }
+    /* Brand colors on icon hover */
+    .website:hover  .icon { color: #333; }
+    .twitter:hover  .icon { color: #1da1f2; }
+    .telegram:hover .icon { color: #2aabee; }
+    .discord:hover  .icon { color: #5865f2; }
+    .medium:hover   .icon { color: #00ab6c; }
+    .substack:hover .icon { color: #ff6719; }
+    .youtube:hover  .icon { color: #ff0000; }
+    .tiktok:hover   .icon { color: #ff0050; }
+
+    /* ────────────────────────────────────────────────────────────
+       DARK MODE (if user’s system/browser is set to dark theme)
+       Using @media (prefers-color-scheme: dark) 
+       ──────────────────────────────────────────────────────────── */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #2f2f2f; /* a darker background */
+        color: #eeeeee;
+      }
+      /* Pill default background for dark mode */
+      .social {
+        background-color: #3a3a3a;
+      }
+      .social:hover {
+        background-color: #c076e2; /* same purple on hover */
+      }
+      /* Default icon color in dark mode: a lighter gray (#bbb) */
+      .icon {
+        color: #bbbbbb;
+      }
+      /* Label in dark mode: slightly brighter text (#eee).
+         On hover, it still goes white for contrast. */
+      .label {
+        color: #eeeeee;
+      }
+      .social:hover .label {
+        color: #ffffff;
+      }
+    }
   </style>
 </head>
 <body>
@@ -118,7 +151,7 @@
       <span class="label">Medium</span>
     </div>
 
-    <!-- Substack (fa-newspaper fallback) -->
+    <!-- Substack -->
     <div id="substack" class="social substack" onclick="navigate(this.id)">
       <span class="icon"><i class="fa-solid fa-newspaper"></i></span>
       <span class="label">Substack</span>
@@ -157,7 +190,7 @@
           window.open("https://medium.com/@onbeam", "_blank");
           break;
         case "substack":
-          window.open("https://onbeam.substack.com/", "_blank");
+          window.open("https://your-substack-url.com", "_blank");
           break;
         case "youtube":
           window.open("https://www.youtube.com/@BeamGamers_", "_blank");
@@ -168,5 +201,6 @@
       }
     }
   </script>
+
 </body>
 </html>
