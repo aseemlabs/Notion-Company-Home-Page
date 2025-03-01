@@ -2,102 +2,144 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Social Icons - Equal Spacing</title>
-  <!-- Load Font Awesome 6.2+ for brand icons -->
+  <title>Social Icons + Labels (Pill + Purple Hover)</title>
+
+  <!-- Load Inter (Notion-like) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" />
+
+  <!-- Load Font Awesome for brand icons -->
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
   <style>
+    /* Reset & basic setup */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
-    /* Let body auto-size based on content, 
-       so the embed can stretch in Notion */
     body {
+      font-family: 'Inter', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       background: #fff;
-      font-family: "Poppins", sans-serif;
       padding: 16px;
     }
 
-    /* 
-      - 100% width ensures the container stretches across the entire embed
-      - flex-wrap: wrap allows icons to flow onto a new line if too narrow
-      - justify-content: space-evenly distributes them evenly left to right
-    */
+    /* Container spans the full width for the Notion embed, 
+       distributing items evenly, wrapping if needed. */
     .wrapper {
       width: 100%;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-evenly;
-      /* you can set a min-width or max-width if desired */
+      gap: 12px; /* spacing between pills if they wrap */
     }
 
+    /* Each link is a “pill” with gray bg, slight round corners, etc. */
     .social {
       cursor: pointer;
-      display: flex; /* so icons center within this box if we give it a size */
+      display: flex;
       align-items: center;
-      justify-content: center;
-      min-width: 48px; /* ensures some space for each icon */
-      margin: 8px 0;   /* vertical margin if they wrap */
+      gap: 8px;             /* space between icon & label */
+      background-color: #f7f7f7;
+      border-radius: 8px;   /* pill shape */
+      padding: 8px 12px;
+      min-width: 100px;     /* ensures a decent clickable area */
+      transition: background-color 0.2s ease;
     }
 
-    .social .icon {
-      font-size: 2rem; /* adjust icon size to your taste */
+    /* On hover, pill goes purple (#c076e2) */
+    .social:hover {
+      background-color: #c076e2;
+    }
+
+    /* Icon: default gray, brand color on hover. */
+    .icon {
+      font-size: 1.25rem; /* ~20px */
       color: #7a7a7a;
       transition: color 0.3s;
     }
 
-    /* Hover colors */
-    .website:hover .icon { color: #333; }
-    .twitter:hover .icon { color: #1da1f2; }
-    .telegram:hover .icon { color: #2aabee; }
-    .discord:hover .icon { color: #5865f2; }
-    .medium:hover .icon { color: #00ab6c; }
-    .youtube:hover .icon { color: #ff0000; }
-    .tiktok:hover .icon { color: #ff0050; }
+    /* Text label: default #333, turns white on hover for contrast. */
+    .label {
+      font-size: 1rem;    /* ~16px, Notion-like paragraph size */
+      color: #333;
+      font-weight: 500;
+      letter-spacing: 0.01rem;
+      transition: color 0.3s;
+    }
+    .social:hover .label {
+      color: #fff;
+    }
+
+    /* Brand color on icon hover */
+    .website:hover   .icon { color: #333; }
+    .twitter:hover   .icon { color: #1da1f2; }
+    .telegram:hover  .icon { color: #2aabee; }
+    .discord:hover   .icon { color: #5865f2; }
+    .medium:hover    .icon { color: #00ab6c; }
+    .substack:hover  .icon { color: #ff6719; }
+    .youtube:hover   .icon { color: #ff0000; }
+    .tiktok:hover    .icon { color: #ff0050; }
   </style>
 </head>
-
 <body>
+
   <div class="wrapper">
     <!-- Website -->
     <div id="website" class="social website" onclick="navigate(this.id)">
       <span class="icon"><i class="fa-solid fa-globe"></i></span>
+      <span class="label">Website</span>
     </div>
+
     <!-- Twitter -->
     <div id="twitter" class="social twitter" onclick="navigate(this.id)">
       <span class="icon"><i class="fab fa-twitter"></i></span>
+      <span class="label">Twitter</span>
     </div>
+
     <!-- Telegram -->
     <div id="telegram" class="social telegram" onclick="navigate(this.id)">
       <span class="icon"><i class="fab fa-telegram"></i></span>
+      <span class="label">Telegram</span>
     </div>
+
     <!-- Discord -->
     <div id="discord" class="social discord" onclick="navigate(this.id)">
       <span class="icon"><i class="fab fa-discord"></i></span>
+      <span class="label">Discord</span>
     </div>
+
     <!-- Medium -->
     <div id="medium" class="social medium" onclick="navigate(this.id)">
       <span class="icon"><i class="fab fa-medium"></i></span>
+      <span class="label">Medium</span>
     </div>
+
+    <!-- Substack (fa-newspaper fallback) -->
+    <div id="substack" class="social substack" onclick="navigate(this.id)">
+      <span class="icon"><i class="fa-solid fa-newspaper"></i></span>
+      <span class="label">Substack</span>
+    </div>
+
     <!-- YouTube -->
     <div id="youtube" class="social youtube" onclick="navigate(this.id)">
       <span class="icon"><i class="fab fa-youtube"></i></span>
+      <span class="label">YouTube</span>
     </div>
+
     <!-- TikTok -->
     <div id="tiktok" class="social tiktok" onclick="navigate(this.id)">
       <span class="icon"><i class="fab fa-tiktok"></i></span>
+      <span class="label">TikTok</span>
     </div>
   </div>
 
   <script>
     function navigate(id) {
-      // Open links in a new tab
+      // All links open in new tab
       switch (id) {
         case "website":
           window.open("https://onbeam.com/", "_blank");
@@ -113,6 +155,9 @@
           break;
         case "medium":
           window.open("https://medium.com/@onbeam", "_blank");
+          break;
+        case "substack":
+          window.open("https://your-substack-url.com", "_blank");
           break;
         case "youtube":
           window.open("https://www.youtube.com/@BeamGamers_", "_blank");
