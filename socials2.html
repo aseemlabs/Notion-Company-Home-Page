@@ -2,82 +2,93 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Social Icons + Labels (Light/Dark Adaptive)</title>
+  <title>Social Icons (Transparent for Notion)</title>
 
-  <!-- Load Inter (Notion-like) -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" />
-
+  <!-- Load Inter (Notion-like font) -->
+  <link rel="stylesheet" 
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" />
   <!-- Load Font Awesome for brand icons -->
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
   <style>
-    /* Basic resets & typography */
+    /* Basic resets */
     * {
-      margin: 0;
-      padding: 0;
+      margin: 0; 
+      padding: 0; 
       box-sizing: border-box;
     }
+
+    /* 
+      Use transparent background so Notion's own background shows through.
+      “color: inherit;” means we pick up text color from the parent environment
+      (which Notion typically sets based on light/dark mode).
+    */
     body {
+      background: transparent; 
+      color: inherit; 
       font-family: 'Inter', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 16px;
-      /* Default Light Mode */
-      background-color: #ffffff; 
-      color: #333333;
     }
 
+    /* Container for the pill links */
     .wrapper {
       width: 100%;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-evenly;
-      gap: 12px; /* spacing between pills if they wrap */
+      gap: 12px;
     }
 
-    /* 
-      PILL STYLES 
-      Default: light mode (gray background).
-    */
+    /* Each “pill” is now semi-transparent so it can adapt
+       to light/dark backgrounds more gracefully. */
     .social {
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 8px;
-      background-color: #f7f7f7;
+      /* A slightly transparent gray for “light mode” background */
+      background-color: rgba(0, 0, 0, 0.05);
       border-radius: 8px;
       padding: 8px 12px;
       min-width: 100px;
       transition: background-color 0.2s ease;
     }
 
-    /* Hover: pill goes purple (#c076e2). */
+    /* On hover, we show #c076e2. Still works fine in both modes. */
     .social:hover {
       background-color: #c076e2;
     }
 
-    /* Icon defaults: gray (#7a7a7a). */
+    /* Icon defaults to inherited text color but slightly muted,
+       so it’s not too bright in dark mode. 
+       We'll pick a mid-gray for non-hover states. */
     .icon {
       font-size: 1.25rem;
-      color: #7a7a7a;
+      color: rgba(120,120,120,1);
       transition: color 0.3s;
     }
 
-    /* Label defaults: #333 text. On hover, it becomes white. */
+    /* Label inherits overall text color, but we can darken a bit for light mode. */
     .label {
       font-size: 1rem;
-      color: #333;
       font-weight: 500;
       letter-spacing: 0.01rem;
+      color: inherit; /* Inherit from the parent environment. */
       transition: color 0.3s;
     }
+
+    /* On hover, label goes fully white for contrast. */
     .social:hover .label {
-      color: #ffffff;
+      color: #fff;
     }
 
-    /* Brand colors on icon hover */
+    /* Brand color on icon hover: 
+       If you want to tweak the “base” color of the icon for non-hover, do so above.
+    */
     .website:hover  .icon { color: #333; }
     .twitter:hover  .icon { color: #1da1f2; }
     .telegram:hover .icon { color: #2aabee; }
@@ -87,82 +98,60 @@
     .youtube:hover  .icon { color: #ff0000; }
     .tiktok:hover   .icon { color: #ff0050; }
 
-    /* ────────────────────────────────────────────────────────────
-       DARK MODE (if user’s system/browser is set to dark theme)
-       Using @media (prefers-color-scheme: dark) 
-       ──────────────────────────────────────────────────────────── */
+    /*
+      Optional: A “prefers-color-scheme: dark” override can help if 
+      you want even more fine-tuned differences in dark mode.
+      For example, a different pill background color in dark mode:
+    */
     @media (prefers-color-scheme: dark) {
-      body {
-        background-color: #2f2f2f; /* a darker background */
-        color: #eeeeee;
-      }
-      /* Pill default background for dark mode */
       .social {
-        background-color: #3a3a3a;
+        /* more transparent in dark mode, so background is subtle */
+        background-color: rgba(255, 255, 255, 0.07);
       }
-      .social:hover {
-        background-color: #c076e2; /* same purple on hover */
-      }
-      /* Default icon color in dark mode: a lighter gray (#bbb) */
       .icon {
-        color: #bbbbbb;
-      }
-      /* Label in dark mode: slightly brighter text (#eee).
-         On hover, it still goes white for contrast. */
-      .label {
-        color: #eeeeee;
-      }
-      .social:hover .label {
-        color: #ffffff;
+        /* lighten the base icon color in dark mode */
+        color: rgba(200, 200, 200, 1);
       }
     }
   </style>
 </head>
 <body>
-
   <div class="wrapper">
     <!-- Website -->
     <div id="website" class="social website" onclick="navigate(this.id)">
       <span class="icon"><i class="fa-solid fa-globe"></i></span>
       <span class="label">Website</span>
     </div>
-
     <!-- Twitter -->
     <div id="twitter" class="social twitter" onclick="navigate(this.id)">
       <span class="icon"><i class="fab fa-twitter"></i></span>
       <span class="label">Twitter</span>
     </div>
-
     <!-- Telegram -->
     <div id="telegram" class="social telegram" onclick="navigate(this.id)">
       <span class="icon"><i class="fab fa-telegram"></i></span>
       <span class="label">Telegram</span>
     </div>
-
     <!-- Discord -->
     <div id="discord" class="social discord" onclick="navigate(this.id)">
       <span class="icon"><i class="fab fa-discord"></i></span>
       <span class="label">Discord</span>
     </div>
-
     <!-- Medium -->
     <div id="medium" class="social medium" onclick="navigate(this.id)">
       <span class="icon"><i class="fab fa-medium"></i></span>
       <span class="label">Medium</span>
     </div>
-
     <!-- Substack -->
     <div id="substack" class="social substack" onclick="navigate(this.id)">
       <span class="icon"><i class="fa-solid fa-newspaper"></i></span>
       <span class="label">Substack</span>
     </div>
-
     <!-- YouTube -->
     <div id="youtube" class="social youtube" onclick="navigate(this.id)">
       <span class="icon"><i class="fab fa-youtube"></i></span>
       <span class="label">YouTube</span>
     </div>
-
     <!-- TikTok -->
     <div id="tiktok" class="social tiktok" onclick="navigate(this.id)">
       <span class="icon"><i class="fab fa-tiktok"></i></span>
@@ -201,6 +190,5 @@
       }
     }
   </script>
-
 </body>
 </html>
