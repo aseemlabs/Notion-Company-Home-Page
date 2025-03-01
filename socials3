@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Minimal Responsive Social Links</title>
+
+  <!-- Inter to match Notion’s style -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" />
+
+  <!-- Font Awesome for brand icons -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+  <style>
+    /* Reset & let everything inherit from Notion’s environment */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      background: transparent;
+      color: inherit; 
+      font-family: 'Inter', sans-serif;
+      /* Let the content size height automatically based on the wrapper */
+    }
+
+    /* 
+      Container for the icons/labels:
+      - 100% width so it fills the embed’s width
+      - flex‐wrap so items move to next line if embed gets narrower
+      - gap for spacing
+      - center horizontally
+    */
+    .wrapper {
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      padding: 8px; /* mild padding for breathing room */
+    }
+
+    /* Each social link: 
+       - no pill background
+       - inline-flex so icon & label can align
+       - inherits text color from Notion
+    */
+    .social {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    /*
+      The icon & label scale with clamp() so that:
+        - min size: 0.9rem (~14.4px)
+        - max size: 1.2rem (~19.2px)
+        - automatically sized in between based on container width
+    */
+    .icon {
+      font-size: clamp(0.9rem, 2vw, 1.2rem);
+      color: inherit;
+      transition: color 0.2s;
+    }
+    .label {
+      font-size: clamp(0.9rem, 2vw, 1.2rem);
+      color: inherit;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    /*
+      If you want brand colors on hover:
+      (on hover, the label remains “inherit” or changes if you prefer)
+    */
+    .website:hover  .icon { color: #333; }
+    .twitter:hover  .icon { color: #1da1f2; }
+    .telegram:hover .icon { color: #2aabee; }
+    .discord:hover  .icon { color: #5865f2; }
+    .medium:hover   .icon { color: #00ab6c; }
+    .substack:hover .icon { color: #ff6719; }
+    .youtube:hover  .icon { color: #ff0000; }
+    .tiktok:hover   .icon { color: #ff0050; }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- Website -->
+    <div id="website" class="social website" onclick="navigate(this.id)">
+      <span class="icon"><i class="fa-solid fa-globe"></i></span>
+      <span class="label">Website</span>
+    </div>
+    <!-- Twitter -->
+    <div id="twitter" class="social twitter" onclick="navigate(this.id)">
+      <span class="icon"><i class="fab fa-twitter"></i></span>
+      <span class="label">Twitter</span>
+    </div>
+    <!-- Telegram -->
+    <div id="telegram" class="social telegram" onclick="navigate(this.id)">
+      <span class="icon"><i class="fab fa-telegram"></i></span>
+      <span class="label">Telegram</span>
+    </div>
+    <!-- Discord -->
+    <div id="discord" class="social discord" onclick="navigate(this.id)">
+      <span class="icon"><i class="fab fa-discord"></i></span>
+      <span class="label">Discord</span>
+    </div>
+    <!-- Medium -->
+    <div id="medium" class="social medium" onclick="navigate(this.id)">
+      <span class="icon"><i class="fab fa-medium"></i></span>
+      <span class="label">Medium</span>
+    </div>
+    <!-- Substack -->
+    <div id="substack" class="social substack" onclick="navigate(this.id)">
+      <span class="icon"><i class="fa-solid fa-newspaper"></i></span>
+      <span class="label">Substack</span>
+    </div>
+    <!-- YouTube -->
+    <div id="youtube" class="social youtube" onclick="navigate(this.id)">
+      <span class="icon"><i class="fab fa-youtube"></i></span>
+      <span class="label">YouTube</span>
+    </div>
+    <!-- TikTok -->
+    <div id="tiktok" class="social tiktok" onclick="navigate(this.id)">
+      <span class="icon"><i class="fab fa-tiktok"></i></span>
+      <span class="label">TikTok</span>
+    </div>
+  </div>
+
+  <script>
+    function navigate(id) {
+      switch (id) {
+        case "website":
+          window.open("https://onbeam.com/", "_blank");
+          break;
+        case "twitter":
+          window.open("https://x.com/BuildOnBeam", "_blank");
+          break;
+        case "telegram":
+          window.open("https://t.me/buildonbeam_news", "_blank");
+          break;
+        case "discord":
+          window.open("http://discord.gg/beamgamers", "_blank");
+          break;
+        case "medium":
+          window.open("https://medium.com/@onbeam", "_blank");
+          break;
+        case "substack":
+          window.open("https://your-substack-url.com", "_blank");
+          break;
+        case "youtube":
+          window.open("https://www.youtube.com/@BeamGamers_", "_blank");
+          break;
+        case "tiktok":
+          window.open("https://www.tiktok.com/@beamgamers", "_blank");
+          break;
+      }
+    }
+  </script>
+</body>
+</html>
